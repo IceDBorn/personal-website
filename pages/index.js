@@ -42,7 +42,16 @@ export default function Home() {
                     <h3>A Memoir to Dark Souls &rarr;</h3>
                 </Link>
                 <Link href="/memoir">
-                    <p>A brief little story about this game and it's impact on my life.</p>
+                    <p>A brief story about these games and their impact on my life.</p>
+                </Link>
+            </div>
+
+            <div className="card">
+                <Link href="/contact">
+                    <h3>Contact Me &rarr;</h3>
+                </Link>
+                <Link href="/contact">
+                    <p>A page containing a form for direct contact with me through email.</p>
                 </Link>
             </div>
         </div>
