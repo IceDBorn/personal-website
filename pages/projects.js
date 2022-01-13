@@ -18,11 +18,11 @@ export default function Bio() {
 
 
                 <h1 className="title">
-                    My Favorite Projects
+                    My Best Projects
                 </h1>
 
                 <p className="description">
-                    Details about my favorite projects!
+                    Details about my best projects!
                 </p>
 
                 <a

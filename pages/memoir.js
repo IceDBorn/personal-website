@@ -1,58 +1,58 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function Home() {
-  return (
-    <div className="container">
-      <Head>
-        <title>IceDBorn's Page</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+export default function Bio() {
+    return (
+        <div>
+            <Head>
+                <title>Dark Souls</title>
+                <link rel="icon" href="/dark-souls.ico" />
+            </Head>
 
-      <main>
-        <h1 className="title">
-          Welcome to my page!
-        </h1>
-
-        <p className="description">
-          Select one of the sub-pages to learn more about me!
-        </p>
-
-        <div className="grid">
-          <div className="card">
-            <Link href="/bio">
-            <h3>Biography &rarr;</h3>
-          </Link>
-            <Link href="/bio">
-              <p>Find in-depth information about my life.</p>
-            </Link>
-          </div>
-
-          <div className="card">
-            <Link href="/projects">
-              <h3>Projects &rarr;</h3>
-            </Link>
-            <Link href="/projects">
-              <p>Find in-depth information about my best projects.</p>
-            </Link>
-          </div>
-
-            <div className="card">
-                <Link href="/memoir">
-                    <h3>A Memoir to Dark Souls &rarr;</h3>
-                </Link>
-                <Link href="/memoir">
-                    <p>A brief little story about this game and it's impact on my life.</p>
+            <div className="customButton">
+                <Link href="/">
+                    <p>&larr; Home</p>
                 </Link>
             </div>
-        </div>
-      </main>
 
-      <footer>
-        <h3>IceDBorn</h3>
-      </footer>
+            <main className="container">
+                <h1 className="title">
+                    A Memoir to Dark Souls
+                </h1>
 
-      <style jsx>{`
+                <iframe width="560" height="315" style={{borderRadius: 10}}  src="https://piped.kavin.rocks/embed/9IbPrk-yuts"
+    title="Dark Souls Trailer" frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen/>
+
+                <div className="card">
+                    <h3>About the series</h3>
+                    <p style={{width: "1000px"}}>The games take place within a dark, medieval fantasy setting,
+                        where the player's character fights against knights, dragons, phantoms, demons, and
+                        other monstrous or supernatural entities. The accretion, loss, and recovery of souls is
+                        central to the narrative and gameplay of Souls games. Another recurring motif is that of a once
+                        powerful and prosperous kingdom which has fallen into ruin: for example the setting of
+                        Demon's Souls, Boletaria, in which the player attempts to halt the spread of a demon-infested
+                        fog that threatens to consume the world. </p>
+                </div>
+
+                <div className="card">
+                    <h3>My connection to the games</h3>
+                    <p style={{width: "1000px"}}>I started playing the Dark Souls series in late 2015, that was the first time
+                    I felt so immersed with a video-game. It's story and mechanics require concentration and focus,
+                    especially why "Miyazaki - The creator" himself said that he created these games for the player
+                    to feel immersed and make up his own story from the tiny hints he's given. He wants you as a player
+                        to expand upon your imagination and explore the vast worlds he created for you!
+                        These games can be so challenging, fun and rewarding at the same time,
+                        they make for the best recipe for quality escapism from reality.</p>
+                </div>
+            </main>
+
+            <footer>
+                <h3>IceDBorn</h3>
+            </footer>
+
+            <style jsx>{`
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
@@ -151,12 +151,22 @@ export default function Home() {
           border: 1px solid #eaeaea;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
+        }
+        
+        .customButton {
+          margin: 1rem;
+          flex-basis: 45%;
+          width: 90px;
+          text-align: center;
+          border: 1px solid #eaeaea;
+          border-radius: 10px;
+          transition: color 0.15s ease, border-color 0.15s ease;
           cursor: pointer;
         }
 
-        .card:hover,
-        .card:focus,
-        .card:active {
+        .customButton:hover,
+        .customButton:focus,
+        .customButton:active {
           color: #0070f3;
           border-color: #0070f3;
         }
@@ -184,7 +194,7 @@ export default function Home() {
         }
       `}</style>
 
-      <style jsx global>{`
+            <style jsx global>{`
         html,
         body {
           padding: 0;
@@ -198,6 +208,6 @@ export default function Home() {
           box-sizing: border-box;
         }
       `}</style>
-    </div>
-  )
+        </div>
+    )
 }
