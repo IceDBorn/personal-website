@@ -1,0 +1,1 @@
+This is a personal website built with [Next.js](https://nextjs.org/).
