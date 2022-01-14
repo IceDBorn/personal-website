@@ -78,8 +78,7 @@ min-height: 80vh;
 
             <footer>
                 <h3>This website was developed using <a href="https://nextjs.org/" target="_blank">Next JS</a>
-                    , source code available
-                    <a href="https://github.com/IceDBorn/personal-website" target="_blank"> here</a></h3>
+                    , source code available <a href="https://github.com/IceDBorn/personal-website" target="_blank">here</a></h3>
             </footer>
         </div>
     )
