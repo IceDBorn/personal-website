@@ -1,16 +1,44 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import {useState} from "react";
 
 export default function Bio() {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [textarea, setTextarea] = useState("")
+    const [showForm, setShowForm] = useState(true)
+
+    function handleSubmit() {
+        if (name === "" || email === "" || textarea === "") {
+            alert("Not all fields are filled in!")
+        } else {
+            setShowForm(false)
+            setName("")
+            setEmail("")
+            setTextarea("")
+            setTimeout(() => setShowForm(true), 5000)
+        }
+
+    }
+
+    function handleTextarea(event) {
+        setTextarea(event.target.value)
+
+        if (event.target.value.length > 100) {
+            alert("The message should not exceed 100 characters!")
+            setTextarea(event.target.value.slice(0, 100))
+        }
+    }
+
     return (
         <div>
             <Head>
                 <title>Contact Me</title>
-                <link rel="icon" href="/contact.ico" />
+                <link rel="icon" href="contact.ico" />
             </Head>
 
             <div className="customButton">
-                <Link href="/">
+                <Link href="index.html">
                     <p>&larr; Home</p>
                 </Link>
             </div>
@@ -21,218 +49,38 @@ export default function Bio() {
                 </h1>
 
                 <p className="description">
-                    Make sure to fill all the fields with your info.
+                    Make sure to fill in all the fields with your info.
                 </p>
 
-                <div className="card">
+                <div>
                     <div className="container">
-                        <form action="action_page.php">
-
-                            <label htmlFor="fname">Name</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Your name.."></input>
-
+                        {showForm ? <form>
+                            <label htmlFor="name">Name</label>
+                            <input type="text" id="fname" name="firstname" placeholder="Your name.." value={name}
+                                   onChange={event => setName(event.target.value)}/>
                             <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Your email..."></input>
-
-                            <label htmlFor="subject">Subject</label>
-                                    <textarea id="subject" name="subject" placeholder="Write something.."
-                                              style={{height: 200}}></textarea>
-
-                                    <input type="submit" value="Submit"></input>
-
-                        </form>
+                            <input type="text" id="email" name="email" placeholder="Your email..." value={email}
+                                   onChange={event => setEmail(event.target.value)}/>
+                            <label htmlFor="subject">Message</label>
+                            <textarea id="subject" name="subject" placeholder="Write something.." value={textarea}
+                                      onPaste={handleTextarea} onChange={handleTextarea} style={{height: 200}}/>
+                            <input type="button" value="Submit" onClick={handleSubmit}/>
+                        </form> : <span>Your message was sent successfully!</span>}
                     </div>
                 </div>
             </main>
 
-            <footer>
-                <h3>IceDBorn</h3>
-            </footer>
-
             <style jsx>{`
-              .container {
-                min-height: 100vh;
-                padding: 0 0.5rem;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-              }
-
-              main {
-                padding: 5rem 0;
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-              }
-
-              footer {
-                width: 100%;
-                height: 100px;
-                border-top: 1px solid #eaeaea;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              }
-
-              footer img {
-                margin-left: 0.5rem;
-              }
-
-              footer a {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              }
-
-              a {
-                color: inherit;
-                text-decoration: none;
-              }
-
-              .title a {
-                color: #0070f3;
-                text-decoration: none;
-              }
-
-              .title a:hover,
-              .title a:focus,
-              .title a:active {
-                text-decoration: underline;
-              }
-
-              .title {
-                margin: 0;
-                line-height: 1.15;
-                font-size: 4rem;
-              }
-
-              .title,
-              .description {
-                text-align: center;
-              }
-
-              .description {
-                line-height: 1.5;
-                font-size: 1.5rem;
-              }
-
-              code {
-                background: #fafafa;
-                border-radius: 5px;
-                padding: 0.75rem;
-                font-size: 1.1rem;
-                font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-                DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-              }
-
-              .grid {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-wrap: wrap;
-
-                max-width: 800px;
-                margin-top: 3rem;
-              }
-
-              .card {
-                margin: 1rem;
-                flex-basis: 45%;
-                padding: 1.5rem;
-                text-align: left;
-                color: inherit;
-                text-decoration: none;
-                border: 1px solid #eaeaea;
-                border-radius: 10px;
-                transition: color 0.15s ease, border-color 0.15s ease;
-              }
-
-              .customButton {
-                margin: 1rem;
-                flex-basis: 45%;
-                width: 90px;
-                text-align: center;
-                border: 1px solid #eaeaea;
-                border-radius: 10px;
-                transition: color 0.15s ease, border-color 0.15s ease;
-                cursor: pointer;
-              }
-
-              .customButton:hover,
-              .customButton:focus,
-              .customButton:active {
-                color: #0070f3;
-                border-color: #0070f3;
-              }
-
-              .card h3 {
-                margin: 0 0 1rem 0;
-                font-size: 1.5rem;
-              }
-
-              .card p {
-                margin: 0;
-                font-size: 1.25rem;
-                line-height: 1.5;
-              }
-
-              .logo {
-                height: 1em;
-              }
-
-              // Form
-              /* Style inputs with type="text", type="email" and textareas */
-              input[type=text], input[type=email], textarea {
-                width: 100%; /* Full width */
-                padding: 20px; /* Some padding */
-                border: 1px solid #ccc; /* Gray border */
-                border-radius: 10px; /* Rounded borders */
-                box-sizing: border-box; /* Make sure that padding and width stays in place */
-                margin-top: 6px; /* Add a top margin */
-                margin-bottom: 16px; /* Bottom margin */
-                resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
-              }
-
-              /* Style the submit button with a specific background color etc */
-              input[type=submit] {
-                background-color: #0070f3;
-                color: white;
-                padding: 12px 20px;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-              }
-
-              /* When moving the mouse over the submit button, add a darker green color */
-              input[type=submit]:hover {
-                background-color: #0b56af;
-              }
-
-              @media (max-width: 600px) {
-                .grid {
-                  width: 100%;
-                  flex-direction: column;
-                }
-              }
-            `}</style>
-
-            <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
+.container {
+min-height: 80vh;
+}
       `}</style>
+
+            <footer>
+                <h3>This website was developed using <a href="https://nextjs.org/" target="_blank">Next JS</a>
+                    , source code available
+                    <a href="https://github.com/IceDBorn/personal-website" target="_blank"> here</a></h3>
+            </footer>
         </div>
     )
 }
